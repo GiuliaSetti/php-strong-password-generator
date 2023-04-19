@@ -13,19 +13,8 @@
     Verificato il corretto funzionamento del nostro codice, spostiamo la logica in un file functions.php che includeremo poi nella pagina principale
 
 */
-
-    $pswLength = $_GET['password-length'] ?? 0;
-
-    //funzione per generare la password
-    function randomPsw($length){
-
-        $characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz0123456789!?#$%&-_@';
-
-        return substr(str_shuffle($characters), 0, $length);
-
-    }
-
-
+    // importo functions
+    include './partials/functions.php';
 
 ?>
 
@@ -50,7 +39,7 @@
         </div>
 
         <input type="number" name="password-length" id="password-length" min="4" max="15" placeholder="4 to 15">
-        <button type="submit">Generate A Password</button>
+        <button type="submit">Generate a Password</button>
 
     </form>
 
