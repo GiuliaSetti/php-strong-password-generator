@@ -14,7 +14,16 @@
 
 */
 
+    $pswLength = $_GET['password-length'] ?? 0;
 
+    //funzione per generare la password
+    function randomPsw($length){
+
+        $characters = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz0123456789!?#$%&-_@';
+
+        return substr(str_shuffle($characters), 0, $length);
+
+    }
 
 
 
@@ -29,7 +38,40 @@
     <title>PHP - Password Generator</title>
 </head>
 <body>
-  
+
+    <h1>Generate your random Password</h1>
+
+    <form action="index.php" method="GET">
+
+        <div>
+            <label for="password-length">
+                How many characters would you like your password to be?
+            </label>
+        </div>
+
+        <input type="number" name="password-length" id="password-length" min="4" max="15" placeholder="4 to 15">
+        <button type="submit">Generate A Password</button>
+
+    </form>
+
+
+    <h3>Password Created:</h3>
+    <pre>
+        <?php 
+
+            if($pswLength != ''){
+
+                echo 'Your password is:'. randomPsw($pswLength); 
+
+            } else {
+
+                echo 'You must type a number.';
+
+            }; 
+        
+        ?>
+    </pre>
+
 
 </body>
 </html>
